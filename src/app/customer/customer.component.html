@@ -1,0 +1,127 @@
+<mat-card *ngIf="selectedForm == 1">
+  <mat-card-content>
+    <form (submit)="onRideSelection(postForm);" #postForm="ngForm">
+      <div class="div-select-booking-type">
+          <mat-radio-group aria-label="Select an option" ngModel name="bookingType" required>
+              <mat-radio-button value="1">Book a Taxi</mat-radio-button>
+              <mat-radio-button value="2">Schedule a Ride</mat-radio-button>
+            </mat-radio-group>
+      </div>
+      <button color="accent" class="btn-radio-group" mat-raised-button type="submit">Proceed</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="selectedForm == 2">
+  <mat-card-content>
+    <h2 class="example-h2">Verify your mobile number</h2>
+    <form (submit)="onOtpRequest(postForm);" #postForm="ngForm">
+      <section *ngIf="!isOTPRequested">
+        <mat-form-field>
+          <input matInput type="text" name="mobileNumber" ngModel required placeholder="Enter mobile number">
+        </mat-form-field>
+        <button color="accent" mat-raised-button type="submit">Send OTP</button>
+      </section>
+    </form>
+    <form (submit)="onOtpVerification(postForm);" #postForm="ngForm">
+      <section *ngIf="isOTPRequested">
+        <mat-form-field class="upper-pad">
+          <input matInput type="text" name="otp" ngModel required placeholder="Enter the OTP">
+        </mat-form-field>
+        <button color="accent" mat-raised-button type="submit">Verify</button>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="selectedForm == 3 && booking.bookingType == 1">
+  <h3>Ride details</h3>
+  <form (submit)="onBookRide(postForm);" #postForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" name="destination" ngModel required placeholder="Where To">
+    </mat-form-field>
+    <section class="example-section">
+      <label>Vehicle Type:</label>
+      <mat-radio-group ngModel name="vehicleType">
+        <mat-radio-button class="example-margin" value="Hatchback">Hatchback</mat-radio-button>
+        <mat-radio-button class="example-margin" value="Sedan">Sedan</mat-radio-button>
+        <mat-radio-button class="example-margin" value="SUV">SUV</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <section class="example-section">
+      <label>No of Passengers:</label>
+      <mat-radio-group ngModel name="passgengersCount">
+        <mat-radio-button class="example-margin" value="1">1</mat-radio-button>
+        <mat-radio-button class="example-margin" value="2">2</mat-radio-button>
+        <mat-radio-button class="example-margin" value="3">3</mat-radio-button>
+        <mat-radio-button class="example-margin" value="4">4</mat-radio-button>
+        <mat-radio-button class="example-margin" value="5">5</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <mat-form-field>
+      <mat-label>No of Bags</mat-label>
+      <mat-select required ngModel name="bagsCount">
+        <mat-option value="0">0</mat-option>
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button color="warn" mat-raised-button type="button">Cancel</button>
+    <button color="accent" class="btn-book-now" mat-raised-button type="submit">Book Now</button>
+  </form>
+</mat-card>
+<mat-card *ngIf="selectedForm == 3 && booking.bookingType == 2">
+  <h3>Ride details</h3>
+  <form (submit)="onScheduleRide(postForm);" #postForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" name="destination" ngModel required placeholder="Where To">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="scheduledTime" ngModel [matDatepicker]="scheduledTime" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="scheduledTime"></mat-datepicker-toggle>
+      <mat-datepicker #scheduledTime></mat-datepicker>
+    </mat-form-field>
+    <section class="example-section">
+      <label>Vehicle Type:</label>
+      <mat-radio-group ngModel name="vehicleType">
+        <mat-radio-button class="example-margin" value="Hatchback">Hatchback</mat-radio-button>
+        <mat-radio-button class="example-margin" value="Sedan">Sedan</mat-radio-button>
+        <mat-radio-button class="example-margin" value="SUV">SUV</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <section class="example-section">
+      <label>No of Passengers:</label>
+      <mat-radio-group ngModel name="passgengersCount">
+        <mat-radio-button class="example-margin" value="1">1</mat-radio-button>
+        <mat-radio-button class="example-margin" value="2">2</mat-radio-button>
+        <mat-radio-button class="example-margin" value="3">3</mat-radio-button>
+        <mat-radio-button class="example-margin" value="4">4</mat-radio-button>
+        <mat-radio-button class="example-margin" value="5">5</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <mat-form-field>
+      <mat-label>No of Bags</mat-label>
+      <mat-select required ngModel name="bagsCount">
+        <mat-option value="0">0</mat-option>
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button color="warn" mat-raised-button type="button">Cancel</button>
+    <button color="accent" class="btn-book-now" mat-raised-button type="submit">Schedule</button>
+  </form>
+</mat-card>
+<mat-card *ngIf="selectedForm == 4" class="example-card">
+  <mat-card-header>
+    <mat-card-title>Dubai International Airport</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image
+    [src]="qrCode"
+    alt="">
+  <mat-card-content>
+    <p>BookingId: BK001/23</p>
+    <p>Time: 01/01/2019 02:00 PM</p>
+  </mat-card-content>
+</mat-card>
