@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Booking } from './booking.model';
 import { HttpClient } from '@angular/common/http';
-import { stringify } from 'querystring';
 import { Subject } from 'rxjs';
-
+import { environment } from '../../environments/environment';
+const BACKEND_URL = environment.apiUrl;
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
@@ -12,7 +12,7 @@ export class BookingService {
   qrCode: string;
 
   addBooking(booking: Booking) {
-    this.http.post<{ message: string, qrCode: string }>('http://localhost:3000/api/customer/bookings', booking)
+    this.http.post<{ message: string, qrCode: string }>(`${BACKEND_URL}/customer/bookings`, booking)
     .subscribe(response => {
       this.qrCode = response.qrCode;
       this.qrCodeReceived.next(this.qrCode);
