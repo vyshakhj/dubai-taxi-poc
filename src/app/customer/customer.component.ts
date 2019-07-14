@@ -33,7 +33,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
     bagsCount: 0,
     bookingType: '',
     destination: '',
-    mobileNumber  : '',
+    mobileNumber: '',
     passgengersCount: 0,
     qrCode: '',
     scheduledTime: '',
@@ -103,15 +103,17 @@ export class CustomerComponent implements OnInit, OnDestroy {
       if (result) {
         this.bookingService.addBooking(this.booking);
         this.bookingService.getUpdatedQRcode().subscribe((qrCode) => {
-            this.qrCode = qrCode;
-            this.selectedForm = 4;
-          });
+          this.qrCode = qrCode;
+          this.selectedForm = 4;
+        });
       }
     });
   }
 
   ngOnDestroy(): void {
-    this.bookingSub.unsubscribe();
+    if (this.bookingSub) {
+      this.bookingSub.unsubscribe();
+    }
   }
 }
 
