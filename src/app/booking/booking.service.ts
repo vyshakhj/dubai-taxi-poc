@@ -29,6 +29,7 @@ export class BookingService {
     this.http.get<{ message: string, bookings: Booking[] }>(`${BACKEND_URL}/bookings`)
       .subscribe(response => {
         this.bookings = response.bookings;
+        console.log(this.bookings);
         this.bookingsReceived.next(...[this.bookings]);
       });
 

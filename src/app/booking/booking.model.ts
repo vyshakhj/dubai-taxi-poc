@@ -1,4 +1,5 @@
 export interface Booking {
+  bookingId: string;
   bookingType: string;
   scheduledTime: string;
   mobileNumber: string;

@@ -1,1 +1,16 @@
 <mat-spinner mode="indeterminate" *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="!isLoading">
+  <mat-expansion-panel *ngFor="let booking of bookings">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+      {{booking.bookingId}}
+    </mat-panel-title>
+      <mat-panel-description>
+        Contact: {{booking.mobileNumber}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <img mat-card-image [src]="booking.qrCode" alt="QR Code">
+    <p>Destination: {{booking.destination}}</p>
+    <p>Vehicle Type: {{booking.vehicleType}}</p>
+  </mat-expansion-panel>
+</mat-accordion>

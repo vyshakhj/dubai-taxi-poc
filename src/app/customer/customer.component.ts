@@ -30,6 +30,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
   selectedForm = 1;
   isOTPRequested = false;
   booking: Booking = {
+    bookingId: '',
     bagsCount: 0,
     bookingType: '',
     destination: '',
