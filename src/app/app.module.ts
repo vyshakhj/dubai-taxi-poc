@@ -13,7 +13,8 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatToolbarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatListModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +23,7 @@ import { BookingComponent } from './booking/booking.component';
 import { CustomerComponent, DialogContentExampleDialogComponent } from './customer/customer.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RideComponent } from './ride/ride.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { AppRoutingModule } from './app-routing.module';
     HeaderComponent,
     CustomerComponent,
     DialogContentExampleDialogComponent,
-    BookingComponent
+    BookingComponent,
+    RideComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatNativeDateModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatListModule,
     HttpClientModule
   ],
   providers: [],
