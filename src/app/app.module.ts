@@ -12,7 +12,8 @@ import {
   MatNativeDateModule,
   MatRadioModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +51,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     HttpClientModule
   ],
   providers: [],

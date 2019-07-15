@@ -9,18 +9,30 @@ const BACKEND_URL = environment.apiUrl;
 export class BookingService {
   constructor(private http: HttpClient) { }
   qrCodeReceived = new Subject<string>();
+  bookingsReceived = new Subject<Booking[]>();
   qrCode: string;
+  bookings: Booking[];
 
   addBooking(booking: Booking) {
     this.http.post<{ message: string, qrCode: string }>(`${BACKEND_URL}/customer/bookings`, booking)
-    .subscribe(response => {
-      this.qrCode = response.qrCode;
-      this.qrCodeReceived.next(this.qrCode);
-    });
+      .subscribe(response => {
+        this.qrCode = response.qrCode;
+        this.qrCodeReceived.next(this.qrCode);
+      });
   }
 
   getUpdatedQRcode() {
     return this.qrCodeReceived.asObservable();
+  }
+
+  getBookings() {
+    this.http.get<{ message: string, bookings: Booking[] }>(`${BACKEND_URL}/bookings`)
+      .subscribe(response => {
+        this.bookings = response.bookings;
+        this.bookingsReceived.next(...[this.bookings]);
+      });
+
+    return this.bookingsReceived.asObservable();
   }
 }
 

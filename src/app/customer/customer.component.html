@@ -14,16 +14,16 @@
 <mat-card *ngIf="selectedForm == 2">
   <mat-card-content>
     <h2 class="example-h2">Verify your mobile number</h2>
-    <form (submit)="onOtpRequest(postForm);" #postForm="ngForm">
-      <section *ngIf="!isOTPRequested">
+    <form (submit)="onOtpRequest(postForm);" #postForm="ngForm" *ngIf="!isOTPRequested">
+      <section>
         <mat-form-field>
           <input matInput type="text" name="mobileNumber" ngModel required placeholder="Enter mobile number">
         </mat-form-field>
         <button color="accent" mat-raised-button type="submit">Send OTP</button>
       </section>
     </form>
-    <form (submit)="onOtpVerification(postForm);" #postForm="ngForm">
-      <section *ngIf="isOTPRequested">
+    <form (submit)="onOtpVerification(postForm);" #postForm="ngForm" *ngIf="isOTPRequested">
+      <section>
         <mat-form-field class="upper-pad">
           <input matInput type="text" name="otp" ngModel required placeholder="Enter the OTP">
         </mat-form-field>

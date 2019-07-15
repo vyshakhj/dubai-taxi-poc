@@ -24,7 +24,7 @@ export class DialogContentExampleDialogComponent { }
 })
 export class CustomerComponent implements OnInit, OnDestroy {
   constructor(public dialog: MatDialog, public bookingService: BookingService) { }
-  qrCode: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQMAAAAMyBcgAAAABlBMVEX///8AAABVwtN+AAACBklEQVR4nO2aTa6DMAyELXEAjtSr50gcIJJb/E9pVT29XTyzKIT4Y2U59hQiCIIgCIKg/4hNk+jx+mE+zqe7LF8auwcMQE0gXZxRRJvtPZQUaF7iADWAfE8ySJaSQfYO2TjzC1BDiCOXJHkuG4D6QRoVAa+s2lgqDqBmkFyi25DQ86ix0F/nE6DlIJMF3H88AFAT6KLNWg7LJVn+FKDloI2tCc2xhAyyeYUnoD5QPKn+xWFvM3JnBtQFsiKSDacEaFZFO3rcmg9A60LDzxYtJ/GMLI3ogwAtDGlheUjHGbPJoOhTD78bgHpAnA6F4pk3PqXkiwD1gXZPo/qPSNSZ/d3WArQwNCKqzCY8vZyEkwGoCeT95yx4TiSSZLVZBbQ85OXk2m3EyKouF6BukMi+q9HCEjWlDC2AWkBuU1TDIvGyAagLpEank5ZQcudO+AcnA9C6EIeLyXaibHyZTfhigwJaH9ImNAwLlVoXMar4OwC1gDJATxn7BMsmWP9b5C2NAK0LMdte9bb2sMPZngHqAtWEIjtbtM7kGRSeBqAGkGfKrHvWfPgZJN4WoC7QkEvpO2JA8SY07wC1gLKS5LESY4mo9KmAOkG6J0vfkA6EiO4DCqD1IbKzRXKJwvz8MtUAWheSyxvETlpjenc+AC0LmaZ/c1Vmk/S7vg4ogJaDIAiCIAiC/q4ntU+8ksn13rQAAAAASUVORK5CYII=';
+  qrCode: string;
   bookingSub: Subscription;
 
   selectedForm = 1;
