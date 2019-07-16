@@ -6,11 +6,12 @@
       {{booking.bookingId}}
     </mat-panel-title>
       <mat-panel-description>
-        Contact: {{booking.mobileNumber}}
+        Cab Allocated: No
       </mat-panel-description>
     </mat-expansion-panel-header>
     <img mat-card-image [src]="booking.qrCode" alt="QR Code">
     <p>Destination: {{booking.destination}}</p>
     <p>Vehicle Type: {{booking.vehicleType}}</p>
+    <p>Contact: {{booking.mobileNumber}}</p>
   </mat-expansion-panel>
 </mat-accordion>
